@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!--PAGE-->
+<title>Frontier Group Homepage</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Frontier Group. Investing in tomorrow. Building businesses that matter.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Hanken+Grotesk:wght@300;400;500;600&display=swap">
+<style>
+/* Layout concept: a cinematic full-bleed opener, then alternating calm paper bands (the Group's thinking)
+   and deep colour bands (the businesses), each vertical given its own full-width stage. */
+:root{
+  color-scheme: light;
+  --ink:#071226;          /* deepest navy, text on paper */
+  --navy:#0b1b3a;         /* brand navy */
+  --gold:#c9a45c;         /* brand gold */
+  --gold-soft:#e4cf9f;
+  --paper:#f3f5f8;        /* cool paper */
+  --white:#ffffff;
+  --mute:#5a6578;         /* secondary text on paper */
+  --on-dark:#eef1f6;
+  --on-dark-mute:#b4bdcc;
+  --line:rgba(11,27,58,.14);
+  --line-dark:rgba(255,255,255,.16);
+  --v-mining:#1a1712; --v-finance:#0c1f45; --v-consumer:#11382a; --v-energy:#0b3350; --v-materials:#2a1a4e;
+  --display:"Marcellus","Cinzel","Times New Roman",serif;
+  --body:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;
+  --gutter-l:max(24px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(24px, env(safe-area-inset-right, 0px));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance;letter-spacing:.005em}
+p{margin:0}
+.wrap{max-width:1240px;margin-inline:auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.eyebrow{font-size:.74rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.eyebrow.dark{color:#8a6a2a}
+
+/* ---------- Header ---------- */
+.site-head{position:fixed;inset:0 0 auto;z-index:20;padding-top:env(safe-area-inset-top,0px);transition:background .35s,box-shadow .35s}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:18px}
+.site-head.solid{background:rgba(7,18,38,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line-dark)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--white)}
+.brand svg{width:44px;height:26px;flex:none}
+.brand span{font-family:var(--display);font-size:1.25rem;letter-spacing:.14em;white-space:nowrap}
+.nav{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.nav a{color:var(--on-dark);text-decoration:none;font-size:.82rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding-block:6px;border-bottom:1px solid transparent;transition:border-color .2s,color .2s}
+.nav a:hover{color:var(--gold-soft);border-color:var(--gold)}
+@media (max-width:860px){.nav{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:min(92vh,860px);display:flex;flex-direction:column;justify-content:flex-end;background:var(--ink);color:var(--white);overflow:hidden;isolation:isolate}
+.hero-media{position:absolute;inset:0;z-index:-2}
+.hero-media img,.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.6s ease}
+.hero-media img.on{opacity:1;animation:drift 9s ease-out forwards}
+.hero-media video{opacity:1}
+@keyframes drift{from{transform:scale(1.04)}to{transform:scale(1.14)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(180deg,rgba(7,18,38,.72) 0%,rgba(7,18,38,.28) 34%,rgba(7,18,38,.78) 78%,rgba(7,18,38,.96) 100%),
+  linear-gradient(90deg,rgba(7,18,38,.7),rgba(7,18,38,0) 70%)}
+
+.hero>.wrap{width:100%}
+.hero-copy{padding-block:150px 56px}
+.hero h1{font-size:clamp(2.5rem,6.4vw,5.6rem);line-height:1.04;margin-top:22px;max-width:15ch}
+.hero h1 em{font-style:normal;color:var(--gold-soft);display:block}
+.hero-sub{max-width:54ch;margin-top:26px;font-size:1.1rem;font-weight:300;color:var(--on-dark)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;font-size:.8rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;border:1px solid var(--gold);transition:background .25s,color .25s}
+.btn.fill{background:var(--gold);color:var(--ink)}
+.btn.fill:hover{background:var(--gold-soft)}
+.btn.line{color:var(--white)}
+.btn.line:hover{background:rgba(201,164,92,.18)}
+.reel{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line-dark)}
+.reel button{all:unset;box-sizing:border-box;cursor:pointer;position:relative;padding:18px 14px 22px 0;color:var(--on-dark-mute);font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;min-width:0;transition:color .3s}
+.reel button:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.reel button::before{content:"";position:absolute;left:0;top:-1px;height:2px;width:0;background:var(--gold)}
+.reel button.on{color:var(--white)}
+.reel button.on::before{width:100%;transition:width 6s linear}
+@media (max-width:760px){
+  .reel{grid-template-columns:repeat(5,1fr);gap:6px}
+  .reel button{font-size:0;padding:14px 0}
+  .reel button::after{content:"";position:absolute;left:0;right:0;top:-1px;height:1px}
+}
+
+/* ---------- DNA ---------- */
+.dna{padding-block:clamp(72px,10vw,140px)}
+.dna-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start}
+.dna-lead h2{font-size:clamp(1.9rem,3.4vw,3rem);line-height:1.14;margin-top:18px}
+.dna-lead h2 b{font-weight:400;color:#8a6a2a}
+.dna-lead p{color:var(--mute);margin-top:22px;max-width:44ch}
+.dna-tag{display:inline-block;margin-top:30px;padding:12px 18px;border:1px solid var(--navy);font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.dna-words{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.dna-words li{display:grid;grid-template-columns:1fr;gap:12px;padding-block:clamp(18px,2.6vw,30px);border-bottom:1px solid var(--line)}
+.dna-words strong{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,6.2vw,5.4rem);line-height:1;color:var(--navy);transition:color .3s,letter-spacing .4s}
+.dna-words li:hover strong{color:#8a6a2a;letter-spacing:.02em}
+.dna-words span{color:var(--mute);font-size:1rem;max-width:46ch}
+@media (max-width:900px){.dna-grid{grid-template-columns:1fr}.dna-words li{grid-template-columns:1fr}}
+
+/* ---------- Verticals ---------- */
+.verts-head{padding-block:0 clamp(40px,5vw,64px);display:flex;flex-wrap:wrap;gap:16px 48px;align-items:end;justify-content:space-between}
+.verts-head h2{font-size:clamp(2rem,4vw,3.4rem);line-height:1.1;margin-top:14px;max-width:18ch}
+.verts-head p{max-width:40ch;color:var(--mute)}
+.vert{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);color:var(--on-dark);background:var(--tone)}
+.vert:nth-of-type(even) .vert-photo{order:2}
+.vert-photo{position:relative;min-height:clamp(380px,46vw,620px);overflow:hidden}
+.vert-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.6,.2,1)}
+.vert:hover .vert-photo img{transform:scale(1.06)}
+.vert-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,var(--tone));opacity:.85}
+.vert:nth-of-type(even) .vert-photo::after{background:linear-gradient(270deg,transparent 60%,var(--tone))}
+.vert-num{position:absolute;left:var(--gutter-l);bottom:18px;z-index:1;font-family:var(--display);font-size:clamp(4rem,9vw,8rem);line-height:1;color:rgba(255,255,255,.9);text-shadow:0 2px 30px rgba(0,0,0,.45)}
+.vert:nth-of-type(even) .vert-num{left:auto;right:var(--gutter-r)}
+.vert-body{display:flex;flex-direction:column;justify-content:center;gap:20px;padding:clamp(40px,6vw,88px) var(--gutter-r) clamp(40px,6vw,88px) clamp(24px,5vw,72px);min-width:0}
+.vert:nth-of-type(even) .vert-body{padding-left:var(--gutter-l);padding-right:clamp(24px,5vw,72px)}
+.vert-body h3{font-size:clamp(2rem,3.6vw,3.2rem);line-height:1.08;color:var(--white)}
+.vert-body p{color:var(--on-dark-mute);max-width:46ch}
+.lines{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:6px 0 0;padding:0}
+.lines li{padding:7px 14px;border:1px solid var(--line-dark);font-size:.8rem;letter-spacing:.06em;color:var(--on-dark)}
+.more{align-self:flex-start;margin-top:8px;color:var(--gold-soft);text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid var(--gold);padding-bottom:4px}
+.more:hover{color:var(--white)}
+@media (max-width:860px){
+  .vert{grid-template-columns:1fr}
+  .vert:nth-of-type(even) .vert-photo{order:0}
+  .vert-photo{min-height:300px}
+  .vert-photo::after,.vert:nth-of-type(even) .vert-photo::after{background:linear-gradient(180deg,transparent 55%,var(--tone))}
+  .vert-body,.vert:nth-of-type(even) .vert-body{padding:36px var(--gutter-r) 52px var(--gutter-l)}
+}
+
+/* ---------- Growth template ---------- */
+.growth{background:var(--ink);color:var(--on-dark);padding-block:clamp(72px,10vw,140px)}
+.growth h2{font-size:clamp(2rem,4.4vw,3.8rem);line-height:1.1;margin-top:16px;max-width:20ch;color:var(--white)}
+.steps{list-style:none;margin:clamp(40px,6vw,80px) 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));counter-reset:s}
+.steps li{counter-increment:s;position:relative;display:flex;flex-direction:column;padding:34px 32px 0 0;border-top:1px solid var(--gold)}
+.steps li::before{content:"";position:absolute;top:-6px;left:0;width:11px;height:11px;border-radius:50%;background:var(--gold)}
+.steps li::after{content:"0" counter(s);order:-1;font-family:var(--display);font-size:.95rem;letter-spacing:.2em;color:var(--gold)}
+.steps h3{font-size:clamp(1.5rem,2.4vw,2.1rem);margin-top:10px;color:var(--white)}
+.steps p{margin-top:12px;color:var(--on-dark-mute);max-width:32ch}
+@media (max-width:780px){
+  .steps{grid-template-columns:1fr}
+  .steps li{border-top:0;border-left:1px solid var(--gold);padding:0 0 36px 28px}
+  .steps li::before{top:0;left:-6px}
+}
+
+/* ---------- At a glance ---------- */
+.glance{padding-block:clamp(72px,9vw,120px)}
+.glance h2{font-size:clamp(2rem,4vw,3.2rem);margin-top:14px}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));margin-top:48px;border-top:1px solid var(--navy)}
+.fig{padding:28px 20px 28px 0;border-bottom:1px solid var(--line)}
+.fig b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(3rem,5.4vw,4.6rem);line-height:1;color:var(--navy);font-variant-numeric:tabular-nums}
+.fig span{display:block;margin-top:12px;font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.fig.tbc b{color:transparent;-webkit-text-stroke:1px rgba(11,27,58,.35)}
+.fig small{display:block;margin-top:6px;font-size:.78rem;color:#8a6a2a}
+
+/* ---------- Footer ---------- */
+.foot{background:var(--navy);color:var(--on-dark)}
+.values{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;padding-block:44px;border-bottom:1px solid var(--line-dark);list-style:none;margin:0}
+.values li{display:flex;align-items:center;gap:14px;font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
+.values svg{width:30px;height:30px;flex:none;stroke:var(--gold);fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.foot-base{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-block:30px;font-size:.84rem;color:var(--on-dark-mute)}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero-media img.on{animation:none}
+  .reel button.on::before{transition:none}
+  .vert-photo img{transition:none}
+}
+</style>
+<!--/PAGE-->
+</head>
+<body>
+<!--PAGE-->
+<header class="site-head" id="head">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Frontier Group home">
+      <svg viewBox="0 0 44 26" aria-hidden="true"><path d="M1 25 16 4l7 9.5-3 4-4-5.6L7 25z" fill="#c9a45c"/><path d="M17 25 30 7l13 18h-6l-7-10-7 10z" fill="#e4cf9f"/></svg>
+      <span>FRONTIER GROUP</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav">
+        <li><a href="#dna">Our DNA</a></li>
+        <li><a href="#businesses">Businesses</a></li>
+        <li><a href="#growth">Growth template</a></li>
+        <li><a href="#glance">At a glance</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-label="Introduction">
+  <div class="hero-media" id="media">
+    <!-- Brand film slot: when the film is ready, add
+         <video src="assets/hero.mp4" autoplay muted loop playsinline poster="assets/mining.jpg"></video>
+         here and remove the five stills below. -->
+    <img class="on" src="assets/mining.jpg" alt="">
+    <img src="assets/finance.jpg" alt="">
+    <img src="assets/consumer.jpg" alt="">
+    <img src="assets/energy.jpg" alt="">
+    <img src="assets/materials.jpg" alt="">
+  </div>
+  <div class="wrap hero-copy">
+    <p class="eyebrow">Investing &nbsp;·&nbsp; Partnering &nbsp;·&nbsp; Building tomorrow</p>
+    <h1>Investing in Tomorrow. <em>Building Businesses that Matter.</em></h1>
+    <p class="hero-sub">Frontier Group is an investment-led, diversified operating group. Five strategic pillars, one vision for sustainable growth.</p>
+    <div class="hero-cta">
+      <a class="btn fill" href="#businesses">Explore our businesses</a>
+      <a class="btn line" href="#dna">The Group's DNA</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="reel" id="reel" role="group" aria-label="Business showcase">
+      <button type="button" class="on" aria-label="Show Mining and Logistics">Mining &amp; Logistics</button>
+      <button type="button" aria-label="Show Financial Services">Financial Services</button>
+      <button type="button" aria-label="Show Consumer Products">Consumer Products</button>
+      <button type="button" aria-label="Show Energy and Renewables">Energy &amp; Renewables</button>
+      <button type="button" aria-label="Show Material Sciences">Material Sciences</button>
+    </div>
+  </div>
+</section>
+
+<section class="dna" id="dna">
+  <div class="wrap dna-grid">
+    <div class="dna-lead">
+      <p class="eyebrow dark">The Group's DNA</p>
+      <h2>Risk appetite backed by <b>conviction</b> and <b>capabilities</b>.</h2>
+      <p>We commit early, we commit with partners who share our view, and we stay to run what we build. That is what makes Frontier an operating group and an investor at once.</p>
+      <span class="dna-tag">Investment-led. Diversified. Operating.</span>
+    </div>
+    <ul class="dna-words">
+      <li><strong>Capital</strong><span>Patient funding placed behind opportunities we understand deeply.</span></li>
+      <li><strong>Partnership</strong><span>Strategic allies who bring technology, markets and know-how.</span></li>
+      <li><strong>Execution</strong><span>Hands-on teams that take a plan from paper to production.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="businesses" aria-labelledby="biz-h">
+  <div class="wrap verts-head">
+    <div>
+      <p class="eyebrow dark">Five business verticals</p>
+      <h2 id="biz-h">Five strategic pillars. One vision.</h2>
+    </div>
+    <p>Each business stands on its own strengths and is built for the decades ahead.</p>
+  </div>
+
+  <article class="vert" style="--tone:var(--v-mining)">
+    <div class="vert-photo"><img src="assets/mining.jpg" alt="Open-pit mine with haul trucks" loading="lazy"><span class="vert-num" aria-hidden="true">01</span></div>
+    <div class="vert-body">
+      <p class="eyebrow">Critical resources. Global reach.</p>
+      <h3>Mining &amp; Logistics</h3>
+      <p>The raw materials of steel, aluminium and batteries, moved reliably from pit to port. We are building a resource base that feeds the industries shaping the next economy.</p>
+      <ul class="lines"><li>Coking coal</li><li>Bauxite</li><li>Nickel</li></ul>
+      <a class="more" href="#">Discover more</a>
+    </div>
+  </article>
+
+  <article class="vert" style="--tone:var(--v-finance)">
+    <div class="vert-photo"><img src="assets/finance.jpg" alt="Bank headquarters among city towers" loading="lazy"><span class="vert-num" aria-hidden="true">02</span></div>
+    <div class="vert-body">
+      <p class="eyebrow">Security today. Opportunity tomorrow.</p>
+      <h3>Financial Services</h3>
+      <p>Banking, protection and investment under one roof. We help households and enterprises safeguard what they have and grow what comes next.</p>
+      <ul class="lines"><li>Bank</li><li>Insurance</li><li>Mutual funds</li></ul>
+      <a class="more" href="#">Discover more</a>
+    </div>
+  </article>
+
+  <article class="vert" style="--tone:var(--v-consumer)">
+    <div class="vert-photo"><img src="assets/consumer.jpg" alt="Fresh food, snacks and skincare products" loading="lazy"><span class="vert-num" aria-hidden="true">03</span></div>
+    <div class="vert-body">
+      <p class="eyebrow">Healthier lives. Better living.</p>
+      <h3>Consumer Products</h3>
+      <p>Everyday nutrition, wellness and care for a rising consumer class. Our brands are made to earn a place in daily life and keep it.</p>
+      <ul class="lines"><li>Processed proteins</li><li>Snacks</li><li>Pharmaceuticals</li><li>Aesthetics</li></ul>
+      <a class="more" href="#">Discover more</a>
+    </div>
+  </article>
+
+  <article class="vert" style="--tone:var(--v-energy)">
+    <div class="vert-photo"><img src="assets/energy.jpg" alt="Solar farm at sunrise with an electric vehicle charging" loading="lazy"><span class="vert-num" aria-hidden="true">04</span></div>
+    <div class="vert-body">
+      <p class="eyebrow">Clean energy. A brighter future.</p>
+      <h3>Energy &amp; Renewables</h3>
+      <p>Solar generation and the systems that put electric mobility on the road. We invest where the energy transition needs scale and staying power.</p>
+      <ul class="lines"><li>Solar power</li><li>EV systems</li></ul>
+      <a class="more" href="#">Discover more</a>
+    </div>
+  </article>
+
+  <article class="vert" style="--tone:var(--v-materials)">
+    <div class="vert-photo"><img src="assets/materials.jpg" alt="Laboratory flask in front of a chemical plant" loading="lazy"><span class="vert-num" aria-hidden="true">05</span></div>
+    <div class="vert-body">
+      <p class="eyebrow">Advanced materials. Greater possibilities.</p>
+      <h3>Material Sciences</h3>
+      <p>From petrochemicals to high-purity systems and specialised formulations. We supply the chemistry that modern manufacturing depends on.</p>
+      <ul class="lines"><li>Petrochemicals</li><li>High purity chemical systems</li><li>Formulations</li></ul>
+      <a class="more" href="#">Discover more</a>
+    </div>
+  </article>
+</section>
+
+<section class="growth" id="growth">
+  <div class="wrap">
+    <p class="eyebrow">The Group's growth template</p>
+    <h2>How an opportunity becomes a lasting business.</h2>
+    <ol class="steps">
+      <li><h3>Identify</h3><p>We find opportunities early, where demand is structural and our capabilities give us an edge.</p></li>
+      <li><h3>Bring together</h3><p>We combine our capital with strategic partners who add technology, reach and expertise.</p></li>
+      <li><h3>Build</h3><p>We build and operate businesses focused on long-term value creation.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="glance" id="glance">
+  <div class="wrap">
+    <p class="eyebrow dark">Group at a glance</p>
+    <h2>The Group in numbers</h2>
+    <div class="figs">
+      <div class="fig"><b>5</b><span>Business verticals</span></div>
+      <div class="fig"><b>15</b><span>Business lines</span></div>
+      <div class="fig tbc"><b>00</b><span>Countries of operation</span><small>Figure to be supplied</small></div>
+      <div class="fig tbc"><b>00</b><span>Strategic partners</span><small>Figure to be supplied</small></div>
+      <div class="fig tbc"><b>00</b><span>People</span><small>Figure to be supplied</small></div>
+      <div class="fig tbc"><b>00</b><span>Capital deployed</span><small>Figure to be supplied</small></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <ul class="values">
+      <li><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6 26C6 12 14 6 26 6c0 12-6 20-20 20zM6 26l11-11"/></svg>Sustainable growth</li>
+      <li><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="11" cy="11" r="4"/><circle cx="22" cy="12" r="3"/><path d="M3 26c0-5 3.5-8 8-8s8 3 8 8M21 19c4 0 8 2 8 7"/></svg>Strategic partnerships</li>
+      <li><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M12 22c-3-2-5-5-5-9a9 9 0 0 1 18 0c0 4-2 7-5 9v3h-8zM13 29h6"/></svg>Innovation &amp; efficiency</li>
+      <li><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="12"/><path d="M4 16h24M16 4c4 4 4 20 0 24M16 4c-4 4-4 20 0 24"/></svg>Long-term value creation</li>
+    </ul>
+    <div class="foot-base">
+      <a class="brand" href="#top"><svg viewBox="0 0 44 26" aria-hidden="true"><path d="M1 25 16 4l7 9.5-3 4-4-5.6L7 25z" fill="#c9a45c"/><path d="M17 25 30 7l13 18h-6l-7-10-7 10z" fill="#e4cf9f"/></svg><span>FRONTIER GROUP</span></a>
+      <span>Investing in Tomorrow. Building Businesses that Matter.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var head=document.getElementById('head');
+  function onScroll(){head.classList.toggle('solid',window.scrollY>40)}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var slides=document.querySelectorAll('#media img'),tabs=document.querySelectorAll('#reel button'),i=0,timer;
+  if(!slides.length)return;
+  function show(n){
+    slides[i].classList.remove('on');tabs[i].classList.remove('on');
+    i=(n+slides.length)%slides.length;
+    slides[i].classList.add('on');
+    void tabs[i].offsetWidth;tabs[i].classList.add('on');
+  }
+  function play(){clearInterval(timer);timer=setInterval(function(){show(i+1)},6000)}
+  tabs.forEach(function(t,n){t.addEventListener('click',function(){show(n);play()})});
+  requestAnimationFrame(function(){tabs[0].classList.remove('on');void tabs[0].offsetWidth;tabs[0].classList.add('on')});
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)play();
+})();
+</script>
+<!--/PAGE-->
+</body>
+</html>
